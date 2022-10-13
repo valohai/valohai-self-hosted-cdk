@@ -35,6 +35,24 @@
     "@aws-cdk/core:target-partitions": [
       "aws",
       "aws-cn"
+    ],
+    "vpc_id": "vpc-060702867393fd7fa",
+    "roi_subnet": "subnet-03fcc956e8473fc66",
+    "roi_assign_public_ip": true,
+    "redis_subnets": [
+      "subnet-0633f3e8efeeca5f0",
+      "subnet-02d8fc8b14952fcc4"
+    ],
+    "postgres_subnets": [
+      "subnet-0633f3e8efeeca5f0",
+      "subnet-02d8fc8b14952fcc4"
+    ],
+    "default_s3_bucket_name": "valohai-data-testcorp",
+    "tags": {
+      "valohai": "1"
+    },
+    "allow_ssh_from": [
+      "84.253.253.156/32"
     ]
   }
 }
