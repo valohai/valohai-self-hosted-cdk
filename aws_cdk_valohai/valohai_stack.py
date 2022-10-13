@@ -130,10 +130,10 @@ class ValohaiSelfHostedStack(Stack):
         }
 
         worker_policy_document = iam.PolicyDocument.from_json(worker_policy_document_json)
-        worker_policy = iam.ManagedPolicy(self, "ValohaiWorkerPolicy", managed_policy_name="ValohaiWorkerPolicy-dd", document=worker_policy_document)
+        worker_policy = iam.ManagedPolicy(self, "ValohaiWorkerPolicy", managed_policy_name="ValohaiWorkerPolicy", document=worker_policy_document)
 
         # ValohaiWorkerRole
-        role_worker = iam.Role(self, "ValohaiWorker-dd", role_name="ValohaiWorker-dd", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
+        role_worker = iam.Role(self, "ValohaiWorker", role_name="ValohaiWorker", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
         role_worker.add_managed_policy(worker_policy)
 
         role_worker_instance_profile = iam.CfnInstanceProfile(
@@ -264,10 +264,10 @@ class ValohaiSelfHostedStack(Stack):
             }
 
         master_policy_document = iam.PolicyDocument.from_json(master_policy_document_json)
-        master_policy = iam.ManagedPolicy(self, "ValohaiMasterPolicy",  managed_policy_name="ValohaiMasterPolicy-dd", document=master_policy_document)
+        master_policy = iam.ManagedPolicy(self, "ValohaiMasterPolicy",  managed_policy_name="ValohaiMasterPolicy", document=master_policy_document)
         
         # ValohaiWorkerRole
-        role_master = iam.Role(self, "ValohaiMaster-dd", role_name="ValohaiMaster-dd", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
+        role_master = iam.Role(self, "ValohaiMaster", role_name="ValohaiMaster", assumed_by=iam.ServicePrincipal("ec2.amazonaws.com"))
         role_master.add_managed_policy(master_policy)
 
         ubuntu = ec2.MachineImage.from_ssm_parameter('/aws/service/canonical/ubuntu/server/focal/stable/current/amd64/hvm/ebs-gp2/ami-id')
@@ -344,7 +344,7 @@ class ValohaiSelfHostedStack(Stack):
             multi_az=True,
             publicly_accessible=False,
             subnet_group=db_subnet_group,
-            database_name="roidb"
+            database_name="roi"
         )
 
         cache_subnet_group = elasticache.CfnSubnetGroup(
