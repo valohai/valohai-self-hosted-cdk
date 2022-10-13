@@ -51,8 +51,6 @@
     "tags": {
       "valohai": "1"
     },
-    "allow_ssh_from": [
-      "84.253.253.156/32"
-    ]
+    "allow_ssh_from": []
   }
 }
